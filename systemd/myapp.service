@@ -1,0 +1,29 @@
+[Unit]
+Description=My App Service
+Documentation=man:myapp(1)
+After=network.target auditd.service
+#  run if this file doesnt exist ConditionPathExists=!/etc/ssh/sshd_not_to_be_run
+
+[Service]
+# path to env file EnvironmentFile=-/etc/default/ssh
+# pre start 
+ExecStartPre=echo "Preparing MyApp service..."
+ExecStart=/usr/local/bin/myapp
+#reload
+#ExecReload=/usr/sbin/sshd -t
+#ExecReload=/bin/kill -HUP $MAINPID
+
+KillMode=process
+# Restart=on-failure
+Restart=always
+RestartSec=1
+#RestartPreventExitStatus=255
+# Type=notify
+
+#RuntimeDirectory=sshd
+# RuntimeDirectoryMode=0755
+
+
+[Install]
+WantedBy=multi-user.target
+# Alias=sshd.service

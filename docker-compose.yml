@@ -1,0 +1,9 @@
+
+services:
+  lfcs:
+    build: .
+    container_name: lfcs-container
+    volumes:
+      - /home/mohammad/proj/lfcs:/mnt/lfcs
+    working_dir: /mnt/lfcs
+    tty: true
