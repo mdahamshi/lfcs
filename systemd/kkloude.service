@@ -1,0 +1,39 @@
+[Unit]
+Description=KodeKloud Service
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/kkloud
+KillMode=process
+Restart=on-failure
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+[Unit]
+Description=KodeKloud Service
+After=network.target   sshd.service
+
+[Service]
+ExecStart=/usr/local/bin/kkloud
+KillMode=process
+ExecStop=/usr/local/bin/kkloud --savedata
+Restart=always
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
+~                                                                                                                   
+~                                                                                                                   
+~                                                                                                                   
+~                                                                                                                   
+~                                                                                                                   
+~                                                                                                                   
+~                                                                                                                   
+~                                                                                                                   
+~                                                                                                                   
+~                                                                                                                   
+~                              

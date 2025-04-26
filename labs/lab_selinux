@@ -1,0 +1,20 @@
+ps -eZ | grep sshd > /home/bob/sshd
+
+sysctl -w kernel.modules_disabled=1
+
+ls -Z /bin/sudo | cut -d ':' -f 3 > /home/bob/selabel
+
+sysctl -w net.ipv6.conf.lo.seg6_enabled=1
+
+
+sysctl -w vm.swappiness=10
+
+echo "vm.swappiness=10" > /etc/sysctl.d/less-swappiness.conf && sysctl -p /etc/sysctl.d/less-swappiness.conf
+
+chcon -t httpd_sys_content_t /var/index.html
+
+ semanage user -l | grep staff_u > /home/bob/serole
+
+ restorecon -R  /var/log
+
+

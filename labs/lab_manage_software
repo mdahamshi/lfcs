@@ -1,0 +1,10 @@
+sudo apt install apache2
+
+dpkg --listfiles coreutils | grep "^/bin/u" > name.txt
+
+sudo apt autoremove ziptool
+
+./autogen.sh
+./configure
+make
+ sudo cp tmux /usr/local/bin/

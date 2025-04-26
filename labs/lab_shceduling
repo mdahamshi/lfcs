@@ -1,0 +1,14 @@
+
+
+
+for job in $(atq | awk '{print $1}'); do atrm $job; done
+
+
+anacron -n -f
+
+10      5       db_cleanup      /usr/bin/touch /root/anacron_created_this
+
+sudo at  '15:30 Aug 20 2054'
+0 0 1 * * /usr/bin/touch monthly
+
+0 6,23 * * 0 sudo systemctl restart nginx

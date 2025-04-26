@@ -1,0 +1,18 @@
+
+df -h / | awk 'NR==2 {print $5}' > used
+# check working dir
+printf "%s" "$(df -h / | awk 'NR==2 {print $5}')"  > /home/bob/used
+echo -n "$(df -h / | awk 'NR==2 {print $5}')" > /home/bob/used
+
+
+echo -n "$(du -sh /bin/ | awk '{print $1}')" > /home/bob/bin
+
+echo -n $(free -m | awk '/Mem:/ {print $2}' ) > /home/bob/memory
+
+uptime -p | sed 's/up //' | cut -d ' ' -f 1 > /home/bob/up
+
+
+lscpu | grep 'per socket' | cut  -d ':' -f 2 | tr -d ' ' > /home/bob/cpu
+
+# use & to forward sterr
+xfs_repair -n /dev/vdb &> /home/bob/fscheck

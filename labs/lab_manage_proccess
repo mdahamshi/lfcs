@@ -1,0 +1,20 @@
+
+
+sudo kill -SIGHUP $(systemctl show ssh --property=MainPID --value)
+
+
+pgrep rpcbind  > pid.txt
+
+ sudo journalctl /usr/sbin/sshd -g  'Accepted' | tail -1 | awk '{print $11}' > ip.txt
+
+
+ grep -r 'reboot' /var/log > /home/bob/reboot.log
+
+ sudo journalctl -p info -g '^c' > .priority/boot.log
+
+  ps u  1  > resources.txt
+
+  ps -p 1 -o pid,ppid,cmd,%mem,%cpu > /home/bob/resources.txt
+sleep 3000
+ctrl+z
+bg 1
