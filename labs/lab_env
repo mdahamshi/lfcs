@@ -1,0 +1,24 @@
+echo $MYVAR
+
+$HOME
+
+/etc/environment
+
+printenv > /home/bob/env
+
+echo "MYVAR=TRUE" >> $HOME/.bashrc
+
+echo $GLOBALENV > globalenv
+
+ cp /etc/skel/.* default_data/
+
+ echo "GLOBALOPTION=ON" >> /etc/environment
+
+ sudo echo "echo Welcome to our server!" | sudo tee  /etc/profile.d/login.sh
+
+sudo touch /etc/skel/README # create file in /etc/skel
+sudo echo -n 'export LFCS="Welcome to the KodeKloud LFCS Labs!"' | sudo tee /etc/profile.d/welcome.sh
+
+echo " export PATH=$PATH:$HOME/.config/bin" >> .bashrc
+
+

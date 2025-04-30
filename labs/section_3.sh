@@ -100,4 +100,50 @@ sudo semanage port --list
 sudo semanage port -a -t ssh_port_t -p  tcp 2222 # add port to selinux
 sudo semanage port -d -t ssh_port_t -p  tcp 2222 # remove port from selinux
 
+docker stop lucied
+docker ps --all # show all docker containers
+nc localhost 8080 # check if port is open
+
+docker run --detach --publish 8080:80  --name myseever nginx
+
+docker rm myserver
+docker rmi nginx  # remove image
+man docker run
+docker run --detach --publish 8080:80 --restart always  --name myseever nginx
+
+docker build --tag mohammad/customnginx:1.0 myimage
+
+
+virsh define testmachine.xml
+virsh list --all
+virsh start testmachine
+virsh reboot testmachine
+virsh undefine testmachine
+virsh help undefine
+virsh undefine --remove-all-storage testmachine
+virsh autostart testmachine
+virsh autostart --disable testmachine
+virsh dominfo testmachine
+virsh setvcpus testmachine 2 --config
+virsh setmaxmem testmachine 2048M --config
+virsh setmem testmachine 2024M --config
+
+
+wget https://cloud-images.ubuntu.com/minimal/releases/noble/release/ubuntu-24.04-minimal-cloudimg-amd64.img
+wget https://cloud-images.ubuntu.com/minimal/releases/noble/release/SHA256SUMS
+wget https://cloud-images.ubuntu.com/minimal/releases/noble/release/SHA256SUMS.gpg
+sha256sum -c SHA256SUMS 2>&1 | grep OK
+
+qemu-img info ubuntu-24.04-minimal-cloudimg-amd64.img
+qemu-img resize ubuntu-24.04-minimal-cloudimg-amd64.img 10G
+sudo cp ubuntu-24.04-minimal-cloudimg-amd64.img /var/lib/libvirt/images/
+virt-install --osinfo list
+man virt-install
+?--import
+virt-install --help
+virsh console testmachine
+virt-install --osinfo ubuntu22.04 --name myubuntu  --memory 1024 --vcpus 1 --import --disk /var/lib/libvirt/images/ubuntu-24.04-minimal-cloudimg-amd64.img --graphics none --cloud-init root-password-generate=on
+virt-install --osinfo detect=on --name myubuntu  --memory 1024 --vcpus 1 --import --disk /var/lib/libvirt/images/ubuntu-24.04-minimal-cloudimg-amd64.img --graphics none --cloud-init root-password-generate=on
+virt-install --osinfo debian12 --name debian1 --memory 1024 --vcpus 1 --disk size=10 --location https://deb.debian.org/debian/dists/bookworm/main/installer-amd64/ --graphics none  --extra-args "console=ttyS0"
+
 

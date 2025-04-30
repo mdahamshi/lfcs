@@ -1,0 +1,37 @@
+docker ps -a
+
+virsh autostart VM1
+docker pull docker.io/library/nginx
+
+docker run -d -p 1234:80 --name website docker.io/library/nginx
+
+docker stop website
+docker rm website
+docker rmi docker.io/library/nginx
+
+docker rm -f $(docker ps -aq)
+
+docker run -d -p 9080:80 --name webinstance1 --restart always httpd
+virsh list --all > /home/bob/vm
+virsh start VM1
+
+virsh destroy VM1
+
+virsh undefine --remove-all-storage VM1
+
+virsh define /opt/testmachine2.xml
+
+virsh start VM2
+
+virsh autostart VM2
+virsh setmem VM2 80M --config
+virsh destroy VM2
+
+virt-install  \
+--name kk-ubuntu \
+--memory 1024 \
+--vcpus 1 \
+--import \
+--disk /var/lib/libvirt/images/ubuntu-22.04-minimal-cloudimg-amd64.img \
+--osinfo ubuntu22.04 \
+--graphics none

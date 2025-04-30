@@ -1,0 +1,8 @@
+<domain type="qemu">
+    <name>testmachine</name>
+    <memory unit="Gib">1</memory>
+    <vcpu>1</vcpu>
+    <os>
+        <type arch="x86_64" >hvm</type>
+    </os>
+</domain>

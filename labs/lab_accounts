@@ -1,0 +1,21 @@
+sudo usermod --expiredate "2030-3-1" jane 
+
+
+sudo adduser --system --no-create-home apachedev
+
+sudo usermod --expiredate "" jane w
+
+sudo adduser --shell /bin/csh jack
+
+sudo deluser --remove-home jack
+sudo chage --lastday 0 jane 
+
+sudo gpasswd --add jane developers 
+
+sudo groupadd --gid 9875 cricket
+sudo groupmod --new-name soccer cricket 
+
+sudo useradd -u 5322 -m -G soccer sam
+sudo usermod -g rugby sam
+sudo groupdel appdevs 
+sudo chage -W 2 jane 

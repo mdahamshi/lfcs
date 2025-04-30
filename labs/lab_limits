@@ -1,0 +1,22 @@
+nproc
+
+ulimit -a > limits
+
+sudo visudo
+trinity ALL=(ALL) NOPASSWD: ALL
+
+
+q4 i typed tab instead of space and your validation didnt pass
+
+trinity ALL=(ALL) /usr/bin/mount
+
+stephen          hard    fsize           4096
+@salesteam       soft    nproc           20
+
+%salesteam ALL=(ALL) ALL
+
+trinity ALL=(sam) ALL
+
+add @ before developers
+
+trinity ALL=(ALL) ALL
