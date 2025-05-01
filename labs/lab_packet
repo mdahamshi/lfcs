@@ -1,0 +1,23 @@
+sudo ufw enable
+
+
+sudo ufw allow ssh
+
+sudo ufw allow in to any  port 80
+
+sudo ufw allow in to any port 53 proto tcp
+
+sudo ufw deny in to any port 443 proto tcp
+
+sudo ufw delete deny in to any port 443 proto tcp
+
+22/tcp
+
+sudo ufw allow in from 207.45.232.181
+
+sudo ufw allow in from 10.11.12.0/24
+
+22
+
+delete 5
+sudo ufw insert 1 deny in from 10.0.0.19

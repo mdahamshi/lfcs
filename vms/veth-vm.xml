@@ -1,0 +1,4 @@
+<interface type='direct'>
+  <source dev='veth-vm' mode='bridge'/>
+  <model type='virtio'/>
+</interface>

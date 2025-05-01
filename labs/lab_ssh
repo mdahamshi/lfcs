@@ -1,0 +1,12 @@
+/etc/ssh/sshd_config
+allow devices in ACL nlocalnetwork to access the server
+
+change also sshd_config.d/
+
+sudo apt install squid
+sudo systemctl start squid
+inet
+http_allow external
+
+acl d_facebook dstdomain .facebook.com
+http_access deny d_facebook

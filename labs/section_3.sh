@@ -146,4 +146,5 @@ virt-install --osinfo ubuntu22.04 --name myubuntu  --memory 1024 --vcpus 1 --imp
 virt-install --osinfo detect=on --name myubuntu  --memory 1024 --vcpus 1 --import --disk /var/lib/libvirt/images/ubuntu-24.04-minimal-cloudimg-amd64.img --graphics none --cloud-init root-password-generate=on
 virt-install --osinfo debian12 --name debian1 --memory 1024 --vcpus 1 --disk size=10 --location https://deb.debian.org/debian/dists/bookworm/main/installer-amd64/ --graphics none  --extra-args "console=ttyS0"
 
+echo "export TERM=xterm-256color" >> ~/.bashrc
 

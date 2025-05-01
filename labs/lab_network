@@ -1,0 +1,25 @@
+/etc/hosts
+sudo ss -tunlp
+
+ip -o -f inet addr show eth0 | awk '{print $4}' > /home/bob/ip
+
+ip route  | grep default | awk '{print $3}' > /home/bob/gateway.txt
+
+sudo ss -tnulp | grep :22 | egrep -o "pid=[0-9]+" | head -n 1 | cut -d'=' -f2 | sudo tee pid
+
+sudo ss -tnulp | grep :53 | head -n 1 | egrep -o "pid=[0-9]+" | cut -d '=' -f 2 | sudo tee process_pid
+
+sudo ss -tunpl | grep :8080 | awk '{print $7}' | egrep -o "\"[a-z]+\"" | sed 's/"//g' | sudo tee  process
+
+sudo echo "8.8.8.8 example.com" | sudo tee -a  /etc/hosts
+
+sudo ip addr add 192.168.9.3/24 dev eth1
+
+sudo netplan try 
+
+ip route  > route.txt
+
+sudo ss -tuln | grep LISTEN > incoming.txt
+
+ sudo vi /etc/systemd/resolved.conf
+ sudo systemctl restart systemd-resolved.service 
