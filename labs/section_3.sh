@@ -146,5 +146,20 @@ virt-install --osinfo ubuntu22.04 --name myubuntu  --memory 1024 --vcpus 1 --imp
 virt-install --osinfo detect=on --name myubuntu  --memory 1024 --vcpus 1 --import --disk /var/lib/libvirt/images/ubuntu-24.04-minimal-cloudimg-amd64.img --graphics none --cloud-init root-password-generate=on
 virt-install --osinfo debian12 --name debian1 --memory 1024 --vcpus 1 --disk size=10 --location https://deb.debian.org/debian/dists/bookworm/main/installer-amd64/ --graphics none  --extra-args "console=ttyS0"
 
+virsh vol-create-as default newdisk.qcow2 10G --format qcow2
+virsh vol-create-as default testdisk.qcow2 10G --format qcow2
+virsh vol-create-as default disk3.qcow2 10G --format qcow2
+
+
+virsh attach-disk myubuntu /home/mohammad/.local/share/libvirt/images/testdisk.qcow2 vdc --driver qemu --subdriver qcow2 --persistent 
+virsh attach-disk myubuntu /home/mohammad/.local/share/libvirt/images/newdisk.qcow2 vdb --driver qemu --subdriver qcow2 --persistent 
+virsh attach-disk myubuntu /home/mohammad/.local/share/libvirt/images/disk3.qcow2 vdd --driver qemu --subdriver qcow2 --persistent 
+
+virsh vol-list default
+
+virsh domblklist myubuntu 
+
+
+
 echo "export TERM=xterm-256color" >> ~/.bashrc
 

@@ -1,0 +1,23 @@
+/etc/fstab
+
+B. The lowercase -l option is wrong. It should be -L, with an uppercase L.
+
+mkfs.xfs -L "DataDisk" /dev/vdb
+
+mkfs.ext4 -N 2048 /dev/vdc
+
+mount /dev/vdb /mnt/
+
+umount /mnt/
+
+/dev/vdc        /test   ext4    defaults        0       2
+mount -a
+
+/dev/vdb none swap defaults 0 0
+mkswap /dev/vdb
+swapon --all
+
+swapoff /dev/vdb
+mkswap -L "SwapFS" /dev/vdb
+swapon --all
+

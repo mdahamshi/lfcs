@@ -1,0 +1,12 @@
+lsblk
+sudo mkswap /dev/sda3
+ df / | awk 'NR == 2 {print $1}' | cut -d '/' -f3 > part
+
+ swapon --show | awk 'NR == 2 {print $1}' > swap
+
+ mkswap /dev/vdb2
+ swapon --verbose /dev/vdb2
+  swapoff /dev/vdb2
+
+
+  

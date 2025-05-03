@@ -1,0 +1,33 @@
+/srv/homes hostname1(rw,sync,no_subtree_check) hostname2(ro,sync,no_subtree_check)
+
+rw=read write, sync=syncronize writes
+async fast but less stable
+
+man exports
+
+/etc 127.0.0.1(ro)
+sudo exportfs -r # reload exports
+sudo exportfs -v # show exports
+/etc *.example.com(rw,sync,no_subtree_check) # allow all subdomains
+
+mkdir myetc
+sudo mount 127.0.0.1:/etc myetc/
+fstab:
+127.0.0.1:/etc /home/bob/myetc nfs defaults 0 0
+sudo apt install nbd-server
+sudo systemctl restart nbd-server
+
+sudo apt install nbd-client
+sudo modprobe nbd 
+sudo vi /etc/modules-load.d/nbd.conf  # load nbd module
+nbd
+sudo nbd-client 127.0.0.1 -N partion2
+sudo nbd-client localhost -N partion2
+
+sudo mount /dev/nbd0 nbd/
+
+sudo nbd-client -d /dev/nbd0
+
+sudo nbd-client -l 127.0.0.1 # list nbd devices
+
+

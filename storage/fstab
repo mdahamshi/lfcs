@@ -1,0 +1,5 @@
+# <file system>  <mount point>  <type>  <options>  <dump>  <pass>
+PARTUUID=2324  /boot/efi  vfat  umask=0077  0  0
+PARTUUID=2423  /recovery  vfat  umask=0077  0  0
+/dev/mapper/cryptswap  none  swap  defaults  0  0
+/dev/vdb2   none    swap    defaults    0   0

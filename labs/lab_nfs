@@ -1,0 +1,18 @@
+/etc/exports
+
+
+/home 10.0.0.0/24(ro)
+exportfs -r
+
+127.0.0.1
+
+mount 127.0.0.1:/home /mnt
+/etc/fstab
+
+127.0.0.1:/home /mnt nfs defaults 0 0
+yes
+
+/home 192.0.0.0/24(ro) 127.0.0.10(rw,no_root_squash)
+
+exportfs -r
+

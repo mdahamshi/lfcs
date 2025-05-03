@@ -1,0 +1,11 @@
+findmnt -no OPTIONS / > moptions
+
+umount /mnt/
+
+mount -o ro,noexec,nosuid /dev/vdb1 /mnt/
+
+mount -o remount,rw /dev/vdb1 /mnt
+
+/dev/vdb1 /mnt ext4 defaults,ro o o
+
+

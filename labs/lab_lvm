@@ -1,0 +1,24 @@
+sudo apt install lvm2
+
+ pvcreate /dev/vdb /dev/vdc
+ pvs | grep /dev/vdc | awk '{print $4}'| cut -d '.' -f1 > pvsize
+
+ pvremove /dev/vdc
+
+ vgcreate volume1 /dev/vdb
+
+ vgextend volume1 /dev/vdc
+
+ vgreduce volume1 /dev/vdc
+
+ vgs | awk 'NR == 2 {print $6}' > volume1
+
+ lvcreate --size 0.5G --name smalldata volume1
+
+ lvresize --size 752M  volume1/smalldata
+
+ mkfs.xfs /dev/volume1/smalldata 
+
+ lvremove volume1/smalldata
+
+ 

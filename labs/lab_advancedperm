@@ -1,0 +1,8 @@
+raid1
+ cat /proc/mdstat
+ getfacl archive 
+ sudo mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/vdb /dev/vdc
+sudo setfacl -m user:john:rw specialfile 
+sudo setfacl --remove user:john specialfile 
+setfacl -m group:mail:rx specialfile 
+setfacl -R -m user:john:rwx collection/

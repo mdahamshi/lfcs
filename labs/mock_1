@@ -1,0 +1,96 @@
+sudo sh -c ' find /opt/findme/ -type f -perm -u=x  > /opt/foundthem.txt'
+
+sudo find /opt/findme/ -type f -perm -4000 -exec rm -f {} \;
+
+sudo find /opt/findme/ -type f -size +1k -exec cp {} /opt/ \;
+
+
+#!/bin/bash
+mkdir -p /opt/www-backup/
+cp -ar /var/www/ /opt/www-backup/
+
+vi /etc/crontab 
+0 4 * * * root /opt/script.sh
+vi /etc/security/limits.conf 
+john hard nproc 30
+jane soft fsize 1024
+
+adduser mary --shell /bin/dash 
+usermod -aG sudo mary
+groupadd developers
+ usermod -g developers mary
+ id mary
+
+
+ echo "vm.swappiness=10" >> /etc/sysctl.d/99-swapniess.conf
+ sysctl -w vm.swappiness=10
+vi /etc/fstab
+/dev/vdb1 /backups xfs defaults 0 0
+mkdir -p /backups
+mount -o remount,ro /mnt
+
+
+pvcreate /dev/vdc /dev/vdd
+vgcreate volume1 /dev/vdc /dev/vdd
+lvcreate -L 3G -n website_files volume1
+git init
+git remote add origin https://github.com/kodekloudhub/git-for-beginners-course.git
+git remote -v
+git fetch origin master
+ git checkout -b master origin/master
+
+
+ ssh node01
+
+ docker rm webserver1 --force
+cd kode_web
+ docker build -t kodekloudwebserv .
+ docker run -d -p 8081:80 --name webserver2 kodekloudwebserv
+ curl http://localhost:8081
+
+ sudo sh -c 'echo "/home 10.0.0.0/24(ro)" > /etc/exports'
+ sudo exportfs -ra
+
+ sudo ss -ltunp | egrep ':80 ' | head -1
+
+ ps -ef | grep nginx
+
+ sudo ip addr add 10.5.0.1/24 dev eth1
+ getent hosts _gateway
+
+  sudo getent hosts _gateway | awk '{print $1}'  | sudo tee /opt/gateway.txt
+
+  grep nameserver /etc/resolv.conf | head -n1 | awk '{print $2}' | sudo tee /opt/dns.txt
+
+sudo cfdisk /dev/vdb
+sudo mkfs.ext4 /dev/vdb1
+sudo mkfs.xfs /dev/vdb2
+sudo mkdir -p /part1 /part2
+
+sudo mount /dev/vdb1 /part1
+sudo mount /dev/vdb2 /part2
+/dev/vdb1 /part1 ext4 defaults 0 0
+/dev/vdb2 /part2 xfs defaults 0 0
+
+
+sudo fallocate -l 1024M /swfile
+sudo chmod 0600 /swfile 
+sudo mkswap /swfile 
+sudo swapon /swfile 
+/swfile none swap defaults 0 0
+
+iostat 1
+
+sudo iotop -o -P -b -n 5
+sudo lsof -p 278
+
+sudo df /proc/278/cwd
+
+find /data -type f -printf '%s %p\n' | sort -n
+
+vi /etc/ssh/sshd_config
+X11Forwarding no
+Match User bob
+    X11Forwarding yes
+
+
