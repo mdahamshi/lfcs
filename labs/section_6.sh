@@ -60,6 +60,7 @@ sudo dmsetup info /dev/dm-0
 iostat -p ALL
 iostat -p vda
 sudo setfacl --modify mask:r file3
+setfacl -m u:janet:rw /opt/aclfile
 
 sudo setfacl --remove-all file3
 

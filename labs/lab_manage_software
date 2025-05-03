@@ -4,7 +4,10 @@ dpkg --listfiles coreutils | grep "^/bin/u" > name.txt
 
 sudo apt autoremove ziptool
 
+sudo apt install autoconf automake libncurses5-dev build-essential
+
 ./autogen.sh
 ./configure
 make
+sudo make install
  sudo cp tmux /usr/local/bin/
